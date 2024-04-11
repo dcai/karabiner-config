@@ -13,11 +13,11 @@ import {
   writeToProfile,
 } from 'karabiner.ts';
 
-const ifMacbookBuiltInKeyboard = ifDevice({ vendor_id: 1452, product_id: 834 });
+const ifAppleKeyboard = ifDevice({ vendor_id: 1452 });
 
 writeToProfile('apple_keyboard', [
   simlayer('spacebar', 'num-layer').manipulators([
-    withCondition(ifMacbookBuiltInKeyboard)([
+    withCondition(ifAppleKeyboard)([
       map('q').to('1'),
       map('w').to('2'),
       map('e').to('3'),
@@ -32,19 +32,19 @@ writeToProfile('apple_keyboard', [
     ]),
   ]),
   simlayer('s', 'nav-layer').manipulators([
-    withCondition(ifMacbookBuiltInKeyboard)([
+    withCondition(ifAppleKeyboard)([
       map('h').to('left_arrow'),
       map('j').to('down_arrow'),
       map('k').to('up_arrow'),
       map('l').to('right_arrow'),
     ]),
   ]),
-  rule('a and ; are ctrls', ifMacbookBuiltInKeyboard).manipulators([
-    map('a').to('left_control').toIfAlone('a'),
-    map('semicolon').to('right_control').toIfAlone('semicolon'),
+  rule('a and ; are ctrls', ifAppleKeyboard).manipulators([
+    map('a', 'optionalAny').to('left_control').toIfAlone('a'),
+    map('semicolon', 'optionalAny').to('right_control').toIfAlone('semicolon'),
   ]),
-  rule('f and j are shift', ifMacbookBuiltInKeyboard).manipulators([
-    map('f').to('left_shift').toIfAlone('f'),
-    map('j').to('right_shift').toIfAlone('j'),
+  rule('f and j are shift', ifAppleKeyboard).manipulators([
+    map('f', 'optionalAny').to('left_shift').toIfAlone('f'),
+    map('j', 'optionalAny').to('right_shift').toIfAlone('j'),
   ]),
 ]);
