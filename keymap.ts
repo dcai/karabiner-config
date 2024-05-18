@@ -43,6 +43,9 @@ writeToProfile(
         map('l').to('right_arrow'),
       ]),
     ]),
+    rule('capslock is esc', ifAppleKeyboard).manipulators([
+      map('caps_lock', 'optionalAny').to('left_control').toIfAlone('escape'),
+    ]),
     rule('a and ; are ctrls', ifAppleKeyboard).manipulators([
       map('a', 'optionalAny').to('left_control').toIfAlone('a'),
       map('semicolon', 'optionalAny')
