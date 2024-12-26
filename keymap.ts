@@ -19,7 +19,7 @@ import {
 const ifAppleKeyboard = ifDevice({ vendor_id: 1452 });
 
 const rules = [
-  layer('spacebar', 'num-layer').manipulators([
+  layer('/', 'num-layer').manipulators([
     withCondition(ifAppleKeyboard)([
       map('q').to('1'),
       map('w').to('2'),
@@ -42,14 +42,13 @@ const rules = [
       map('l').to('right_arrow'),
     ]),
   ]),
+  rule('a and ; are ctrls', ifAppleKeyboard).manipulators([
+    // map('a', 'optionalAny').to('left_control', undefined, {}).toIfAlone('a'),
+    map('semicolon', 'optionalAny').to('right_control').toIfAlone('semicolon'),
+  ]),
   // rule('capslock is ctrl and esc', ifAppleKeyboard).manipulators([
   //   map('caps_lock', 'optionalAny').to('left_control').toIfAlone('escape'),
   // ]),
-  // rule('a and ; are ctrls', ifAppleKeyboard).manipulators([
-  //   map('a', 'optionalAny').to('left_control', undefined, {}).toIfAlone('a'),
-  //   map('semicolon', 'optionalAny').to('right_control').toIfAlone('semicolon'),
-  // ]),
-
   // rule('f and j are shift', ifAppleKeyboard).manipulators([
   //   map('f', 'optionalAny').to('left_shift').toIfAlone('f'),
   //   map('j', 'optionalAny').to('right_shift').toIfAlone('j'),
